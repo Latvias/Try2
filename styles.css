@@ -48,15 +48,62 @@ header {
     border: none;
     border-radius: 5px;
     margin-right: 10px;
+    background-color: #222;
+    color: #fff;
 }
 
-.input-area button {
+.input-area .icon-button {
     background: none;
     border: none;
+    cursor: pointer;
     margin-right: 10px;
 }
 
-.input-area img {
+.input-area .icon-button img {
     width: 30px;
     height: auto;
+}
+
+.message {
+    display: flex;
+    margin: 10px 0;
+}
+
+.message.left {
+    justify-content: flex-start;
+}
+
+.message.right {
+    justify-content: flex-end;
+}
+
+.message p {
+    background: #444;
+    padding: 10px;
+    border-radius: 5px;
+    max-width: 60%;
+}
+
+.message.right p {
+    background: #0b93f6;
+    color: #fff;
+}
+
+.message img {
+    max-width: 60px;
+    max-height: 60px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.error-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #333;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1000;
 }
