@@ -14,11 +14,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let micPressTimer;
 
-    micButton.addEventListener('mousedown', () => {
-        micPressTimer = Date.now();
+    micButton.addEventListener('mousedown', startMicPress);
+    micButton.addEventListener('touchstart', startMicPress);
+    micButton.addEventListener('mouseup', endMicPress);
+    micButton.addEventListener('touchend', endMicPress);
+
+    attachButton.addEventListener('click', () => {
+        addMessage('right', '', 'doc.png');
+        setTimeout(() => {
+            addMessage('left', 'Вот ваш документ', 'returndoc.png');
+        }, 10000);
     });
 
-    micButton.addEventListener('mouseup', () => {
+    function startMicPress() {
+        micPressTimer = Date.now();
+    }
+
+    function endMicPress() {
         const pressDuration = Date.now() - micPressTimer;
         let response;
 
@@ -28,14 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
         else response = { img: 'png4.png', text: 'Ответ на аудио 4' };
 
         addMessage('left', response.text, response.img);
-    });
-
-    attachButton.addEventListener('click', () => {
-        addMessage('right', '', 'doc.png');
-        setTimeout(() => {
-            addMessage('left', 'Вот ваш документ', 'returndoc.png');
-        }, 10000);
-    });
+    }
 
     function sendMessage() {
         const text = messageInput.value.trim();
