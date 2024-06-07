@@ -12,12 +12,14 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.key === 'Enter') sendMessage();
     });
 
+    let micPressTimer;
+
     micButton.addEventListener('mousedown', () => {
-        micButton.pressTimer = Date.now();
+        micPressTimer = Date.now();
     });
 
     micButton.addEventListener('mouseup', () => {
-        const pressDuration = Date.now() - micButton.pressTimer;
+        const pressDuration = Date.now() - micPressTimer;
         let response;
 
         if (pressDuration < 20000) response = { img: 'png1.png', text: 'Ответ на аудио 1' };
